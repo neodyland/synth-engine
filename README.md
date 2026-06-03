@@ -7,14 +7,17 @@ Please note that both the MIT License and the BSD 3-Clause License require copyr
 
 See the LICENSE and THIRD_PARTY_NOTICES files for details.
 
-# 前提
-HTS-Engine APIをインストールする必要があります。
-
-# 実行方法
+# セットアップ
+1. HTS-Engine API をインストールします。(debian では `libhtsengine1` として配布されています。)
 1. https://huggingface.co/neody/synth-engine-assets から `all.csv` 及び `symbol.csv` をダウンロードし、 `data/` 以下に配置します。
 2. `./data/template.config.toml` を `./data/config.toml` にコピーします。
 3. 適当な `.htsvoice` ファイルをダウンロードし(調べてください)、それにあわせて `./data/config.toml` を編集します。
-4. `cargo run -r --bin synth-server` を実行します。
+
+# 実行
+## cargoを使った実行
+`cargo run -r --bin synth-server` を実行します。
+## dockerを使った実行
+`docker run -it --rm -p 3000:3000 -v ./data:/data ghcr.io/neodyland/synth-engine:latest` を実行します。
 
 # API
 ## HTSモデル一覧
