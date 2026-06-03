@@ -1,4 +1,7 @@
-use std::{ffi::CString, mem::MaybeUninit};
+use std::{
+    ffi::{CString, c_char},
+    mem::MaybeUninit,
+};
 
 mod bindings {
     #![allow(warnings)]
@@ -30,7 +33,8 @@ impl HTSEngine {
             c_voices.push(CString::new(*v).map_err(|_| crate::Error::InvalidAsCString)?);
         }
 
-        let mut c_voices: Vec<*mut i8> = c_voices.iter().map(|v| v.as_ptr() as *mut i8).collect();
+        let mut c_voices: Vec<*mut c_char> =
+            c_voices.iter().map(|v| v.as_ptr() as *mut c_char).collect();
         if unsafe {
             bindings::HTS_Engine_load(&mut self.inner, c_voices.as_mut_ptr(), voices.len())
         } != 1
@@ -46,7 +50,8 @@ impl HTSEngine {
             c_lines.push(CString::new(*l).map_err(|_| crate::Error::InvalidAsCString)?);
         }
 
-        let mut c_lines: Vec<*mut i8> = c_lines.iter().map(|l| l.as_ptr() as *mut i8).collect();
+        let mut c_lines: Vec<*mut c_char> =
+            c_lines.iter().map(|l| l.as_ptr() as *mut c_char).collect();
         if unsafe {
             bindings::HTS_Engine_synthesize_from_strings(
                 &mut self.inner,

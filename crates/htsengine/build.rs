@@ -33,5 +33,12 @@ fn main() {
         .unwrap();
     #[cfg(target_os = "macos")]
     println!("cargo:rustc-link-search=/opt/homebrew/opt/open-jtalk/lib");
+    #[cfg(target_os = "linux")]
+    {
+        #[cfg(target_arch = "x86_64")]
+        println!("cargo:rustc-link-search=/usr/lib/x86_64-linux-gnu");
+        #[cfg(target_arch = "aarch64")]
+        println!("cargo:rustc-link-search=/usr/lib/aarch64-linux-gnu");
+    }
     println!("cargo:rustc-link-lib=HTSEngine");
 }
