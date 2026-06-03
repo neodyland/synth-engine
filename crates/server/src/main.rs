@@ -6,7 +6,7 @@ use futures::future::try_join_all;
 use serde::Deserialize;
 use std::time::Instant;
 use synth_server::{State, setting::Setting};
-use tokio::net::TcpListener;
+use tokio::{net::TcpListener, signal};
 
 #[derive(Deserialize)]
 struct PreprocessQuery {
@@ -149,6 +149,14 @@ async fn main() -> anyhow::Result<()> {
         .route("/v1/hts/models", routing::get(hts_models).with_state(state));
     let tcp = TcpListener::bind(&setting.bind_addr).await?;
     tracing::info!("Listening on addr: {}", setting.bind_addr);
-    serve(tcp, router).await?;
+    serve(tcp, router)
+        .with_graceful_shutdown(shutdown_signal())
+        .await?;
     Ok(())
+}
+
+async fn shutdown_signal() {
+    signal::ctrl_c()
+        .await
+        .expect("failed to install Ctrl+C handler");
 }
