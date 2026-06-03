@@ -7,6 +7,9 @@ Please note that both the MIT License and the BSD 3-Clause License require copyr
 
 See the LICENSE and THIRD_PARTY_NOTICES files for details.
 
+# 前提
+HTS-Engine APIをインストールする必要があります。
+
 # 実行方法
 1. https://huggingface.co/neody/synth-engine-assets から `all.csv` 及び `symbol.csv` をダウンロードし、 `data/` 以下に配置します。
 2. `./data/template.config.toml` を `./data/config.toml` にコピーします。
