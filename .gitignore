@@ -1,0 +1,7 @@
+target/
+data/*
+!data/template.config.toml
+!data/hts/
+data/hts/*.htsvoice
+__pycache__/
+*.wav

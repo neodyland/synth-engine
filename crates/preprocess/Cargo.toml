@@ -1,0 +1,9 @@
+[package]
+name = "preprocess"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+regex.workspace = true
+anyhow.workspace = true
+unicode-normalization.workspace = true

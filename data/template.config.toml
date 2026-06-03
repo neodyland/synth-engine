@@ -1,0 +1,4 @@
+bind_addr = "[::]:3000"
+
+[models.{name}]
+path = "./data/hts/{name}.htsvoice"

@@ -1,0 +1,10 @@
+[package]
+name = "htsengine"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+thiserror.workspace = true
+
+[build-dependencies]
+bindgen.workspace = true
