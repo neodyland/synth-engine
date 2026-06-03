@@ -31,6 +31,7 @@ fn main() {
         .unwrap()
         .write_to_file(PathBuf::from(var_os("OUT_DIR").unwrap()).join("hts_engine_bindings.rs"))
         .unwrap();
+    #[cfg(target_os = "macos")]
     println!("cargo:rustc-link-search=/opt/homebrew/opt/open-jtalk/lib");
     println!("cargo:rustc-link-lib=HTSEngine");
 }
