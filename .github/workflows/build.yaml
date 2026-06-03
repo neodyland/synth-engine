@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Download assets
         run: |
-          curl -L https://huggingface.co/neody/synth-engine-assets/resolve/main/all.csv?download=true -o ./data/all.csv
+          curl -L https://huggingface.co/neody/synth-engine-assets/resolve/main/all.csv.zstd?download=true -o ./data/all.csv.zstd
           curl -L https://huggingface.co/neody/synth-engine-assets/resolve/main/symbol.csv?download=true -o ./data/symbol.csv
       - name: Setup buildx
         uses: docker/setup-buildx-action@v4

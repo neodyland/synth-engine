@@ -6,7 +6,7 @@ RUN cp "/usr/lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH)/libgcc_s.so.1" "/ws/l
 RUN ln -sf "/usr/lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH)/libHTSEngine.so.1" "/usr/lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH)/libHTSEngine.so"
 COPY Cargo.toml /ws/Cargo.toml
 COPY Cargo.lock /ws/Cargo.lock
-COPY ./data/all.csv /ws/data/all.csv
+COPY ./data/all.csv.zstd /ws/data/all.csv.zstd
 COPY ./data/symbol.csv /ws/data/symbol.csv
 COPY ./crates /ws/crates
 RUN cargo build -r --bin synth-server

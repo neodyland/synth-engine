@@ -9,7 +9,7 @@ See the LICENSE and THIRD_PARTY_NOTICES files for details.
 
 # セットアップ
 1. HTS-Engine API をインストールします。(debian では `libhtsengine1` として配布されています。)
-1. https://huggingface.co/neody/synth-engine-assets から `all.csv` 及び `symbol.csv` をダウンロードし、 `data/` 以下に配置します。
+1. https://huggingface.co/neody/synth-engine-assets から `all.csv.zstd` 及び `symbol.csv` をダウンロードし、 `data/` 以下に配置します。
 2. `./data/template.config.toml` を `./data/config.toml` にコピーします。
 3. 適当な `.htsvoice` ファイルをダウンロードし(調べてください)、それにあわせて `./data/config.toml` を編集します。
 

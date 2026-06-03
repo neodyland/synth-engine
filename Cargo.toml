@@ -34,9 +34,10 @@ toml = "1.1.2"
 async-channel = "2.5.0"
 num_cpus = "1.17.0"
 lru = "0.18.0"
+zstd = "0.13.3"
 
 [profile.release]
 lto = true
 codegen-units = 1
 panic = "abort"
-strip = "symbols"
+strip = true

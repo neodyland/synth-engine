@@ -2,6 +2,8 @@ use regex::{Captures, Regex};
 use std::collections::HashMap;
 use unicode_normalization::UnicodeNormalization;
 
+mod all_csv;
+
 fn capture<'a>(cap: &'a Captures, name: &str) -> Option<&'a str> {
     cap.name(name).map(|s| s.as_str())
 }
@@ -292,7 +294,7 @@ impl Preprocess {
             (Regex::new(r"[….]{3,}")?, "…"),
         ];
         let mut kv_canonicalized = HashMap::new();
-        for line in include_str!("../../../data/all.csv").lines() {
+        for line in all_csv::load_csv().lines() {
             let cols: Vec<&str> = line.split(',').collect();
             if cols.len() != 2 {
                 anyhow::bail!("invalid csv")
